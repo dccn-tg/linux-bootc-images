@@ -32,6 +32,10 @@ modules:
       - source: usr/lib/systemd/user-preset/90-flathub-repo-setup.preset
         destination: /usr/lib/systemd/user-preset/90-flathub-repo-setup.preset
 
+      # .desktop file to create a link to the Donders Institute intranet
+      - source: usr/share/applications/donders-institute-intranet.desktop
+        destination: /usr/share/applications/donders-institute-intranet.desktop
+
   - type: script
     secrets:
       - type: env
