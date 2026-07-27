@@ -2,6 +2,8 @@
 
 images=(fedora-silverblue fedora-kinoite) 
 
+mkdir -p ./output
+
 for image in ${images[@]}; do
     podman pull ghcr.io/dccn-tg/${image}:latest &&
     podman run \
