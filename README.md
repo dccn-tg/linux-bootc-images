@@ -10,7 +10,7 @@ _optional:_ For a newly cloned GitHub repository, a setup is needed for signing 
 
 ## Creating installer ISO
 
-Clone the repository on a local system with podman installed, and run the [isobuild.sh](isobuild.sh) script to create a installation ISO that uses Anaconda for unattended installation.  See [blueprint.toml](blueprint.toml) file for the customisation using the [blueprint](https://osbuild.org/docs/user-guide/blueprint-reference/).
+Clone the repository on a local system with podman installed, and run the [isobuild.sh](isobuild.sh) script as root to create a installation ISO that uses Anaconda for unattended installation.  See [blueprint.toml](blueprint.toml) file for the customisation using the [blueprint](https://osbuild.org/docs/user-guide/blueprint-reference/).
 
 The output ISO will be produced in the directory `output/bootiso`.
 

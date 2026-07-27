@@ -28,6 +28,7 @@ if [[ -f "$STATE_FILE" ]] && [[ "$(cat "$STATE_FILE")" == "$version" ]]; then
 fi
 
 notify-send \
+    --app-name "Updater" \
     --icon=system-software-update \
     "System update available" \
     "Version $version is ready. Reboot to apply."
