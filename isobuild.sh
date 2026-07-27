@@ -14,7 +14,7 @@ for image in ${images[@]}; do
         -v ./blueprint.toml:/config.toml:ro \
         -v ./output:/output \
         -v /var/lib/containers/storage:/var/lib/containers/storage \
-        ghcr.io/osbuild/bootc-image-builder:latest \
+        quay.io/centos-bootc/bootc-image-builder:latest \
           -v --log-level debug \
           --type anaconda-iso \
           --rootfs xfs \
