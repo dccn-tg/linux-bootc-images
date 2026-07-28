@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+---
+name: fedora-sway
+description: "Non-Nvidia Sway laptop image based on Universal Blue Sway Atomic."
+
+base-image: ghcr.io/wayblueorg/sway-gdm
+image-version: 44
+
+modules:
+
+  # Install all packages
+  - from-file: common/packages.yml
+  - from-file: common/eduvpn.yml
+  - from-file: common/docker.yml
+  - from-file: common/nix.yml
+
+  # Apply system policy/configuration
+  - from-file: common/system.yml
+
+  # Enable/configure services
+  - from-file: common/services.yml
+
+  # Boot/kernel settings
+  - from-file: common/laptop-kargs.yml
+
+  - type: signing
