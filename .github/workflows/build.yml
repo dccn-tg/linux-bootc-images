@@ -23,6 +23,7 @@ jobs:
           # !! Add your recipes here
           - fedora-silverblue.yml
           - fedora-kinoite.yml
+          - fedora-sway.yml
     steps:
       - name: Generate image version
         run: |
