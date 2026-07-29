@@ -14,6 +14,9 @@ modules:
   - from-file: common/docker.yml
   - from-file: common/nix.yml
 
+  # Install Sway-specific packages
+  - from-file: sway/packages.yml
+
   # Apply system policy/configuration
   - from-file: common/system.yml
 

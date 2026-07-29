@@ -1,0 +1,9 @@
+type: dnf
+
+install:
+  packages:
+    - zsh
+    - swappy
+    - wtype
+    - zathura
+    - zathura-plugins-all

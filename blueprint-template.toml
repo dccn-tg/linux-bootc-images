@@ -90,6 +90,11 @@ bootloader --location=mbr
 # ---------------------------------------------------------------------------
 rootpw --lock
 
+# ---------------------------------------------------------------------------
+# Provision the user `dccntg` with default password
+# ---------------------------------------------------------------------------
+user --name=dccntg --gecos="Administrator" --groups=wheel --password='@PASSWORD@' --iscrypted
+
 %post
 # Configure the installed system here
 systemctl enable display-manager.service
