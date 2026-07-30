@@ -1,6 +1,6 @@
 # Custom OCI bootc image
 
-Custom OCI bootc image based on an atomic Fedora (currently Fedora Silverblue).
+OCI bootc images for DCCN laptops, based on an atomic Fedora.
 
 ## OCI build
 
@@ -20,7 +20,6 @@ __The following scenario was tested in GNOME Boxes__
 
 - Flash the ISO to a USB drive
 - Boot the system from the USB drive. After the kickstart finishes the installation, system is rebooted into GNOME for first-time setup.
-
 
 ## System upgrade with bootc
 
