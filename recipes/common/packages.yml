@@ -1,35 +1,38 @@
-# Packages module
-type: dnf
+modules:
 
-install:
-  packages:
-    # From modules/common.nix
-    - git
-    - vim-enhanced       # NixOS: vim
-    - wget
-    - curl
-    - usbutils           # provides lsusb
-    - pciutils           # provides lspci
+  - type: dnf
+    install:
+      packages:
+        # From modules/common.nix
+        - git
+        - vim-enhanced       # NixOS: vim
+        - wget
+        - curl
+        - usbutils           # provides lsusb
+        - pciutils           # provides lspci
 
-    # passwordless authentication
-    - pam-u2f
-    - pamu2fcfg
+        # passwordless authentication
+        - pam-u2f
+        - pamu2fcfg
 
-    # password manager
-    - pass
+        # OpenSCAP security audit tools (https://www.open-scap.org/)
+        - openscap-scanner
+        - scap-security-guide
+        # Modern compliance tool (https://github.com/complytime/complyctl)
+        - complyctl
+        - complyctl-openscap-plugin
 
-    # OpenSCAP security audit tools (https://www.open-scap.org/)
-    - openscap-scanner
-    - scap-security-guide
-    # Modern compliance tool (https://github.com/complytime/complyctl)
-    - complyctl
-    - complyctl-openscap-plugin
+        # From modules/power.nix
+        - acpi               # battery / AC adapter / thermal info
 
-    # From modules/power.nix
-    - acpi               # battery / AC adapter / thermal info
+        # From modules/thermal.nix
+        - lm_sensors         # hardware sensor readings (CPU temp, fan speed)
 
-    # From modules/thermal.nix
-    - lm_sensors         # hardware sensor readings (CPU temp, fan speed)
+        # Power manager
+        - tuned-ppd
 
-    # Power manager
-    - tuned-ppd 
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        install:
+          - app.eduroam.geteduroam
