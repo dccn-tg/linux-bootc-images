@@ -11,17 +11,18 @@ modules:
         - nix
         - nix-daemon
 
-  - type: script
-    snippets:
-      - "rm -f /nix"
-      - "mkdir -p /nix"
-
   - type: files
     files:
       - source: usr/lib/systemd/system/nix.mount
         destination: /usr/lib/systemd/system/nix.mount
-      - source: usr/libexec/bootstrap-home-manager.sh
-        destination: /usr/libexec/bootstrap-home-manager.sh
+      - source: usr/bin/bootstrap-home-manager.sh
+        destination: /usr/bin/bootstrap-home-manager.sh
+
+  - type: script
+    snippets:
+      - "rm -f /nix"
+      - "mkdir -p /nix"
+      - "chmod +x /usr/bin/bootstrap-home-manager.sh"
 
   - type: systemd
     system:
