@@ -45,6 +45,7 @@ modules:
     snippets:
       - "chmod +x /usr/libexec/managed-etc-mount.sh"
       - "chmod +x /usr/libexec/ostree-update-notify.sh"
+      - "ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime"
       - "ln -s /usr/lib/systemd/user/ostree-update-notify.timer /etc/systemd/user/timers.target.wants/ostree-update-notify.timer"
       - "ln -s /usr/lib/systemd/user/flathub-repo-setup.service /etc/systemd/user/default.target.wants/flathub-repo-setup.service"
       - "groupadd -r bootc-users"
