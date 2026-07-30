@@ -2,6 +2,7 @@ type: dnf
 
 install:
   packages:
+    - pass
     - zsh
     - swappy
     - wtype
