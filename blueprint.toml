@@ -57,6 +57,43 @@ fi
 %end
 
 # ---------------------------------------------------------------------------
+# %pre — interactively specify username/password for the first user 
+# ---------------------------------------------------------------------------
+%pre --interpreter=/usr/bin/bash
+
+exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
+chvt 6
+
+echo
+echo "=== Create first user (wheels group) ==="
+echo
+
+read -rp "Username: " USERNAME
+
+while true; do
+    read -rsp "Password: " PASSWORD
+    echo
+    read -rsp "Confirm password: " PASSWORD2
+    echo
+
+    [[ "$PASSWORD" == "$PASSWORD2" ]] && break
+
+    echo "Passwords do not match. Try again."
+done
+
+PASSWORD_HASH=$(openssl passwd -6 "$PASSWORD")
+unset PASSWORD PASSWORD2
+
+cat > /tmp/user.ks <<EOF
+user --name=${USERNAME} --gecos="Administrator" --groups=wheel --password=${PASSWORD_HASH} --iscrypted
+EOF
+
+chvt 1 
+exec < /dev/tty1 > /dev/tty1 2> /dev/tty1
+
+%end
+
+# ---------------------------------------------------------------------------
 # Installer display mode — non-interactive except for LUKS passphrase prompt
 # ---------------------------------------------------------------------------
 text
@@ -91,9 +128,9 @@ bootloader --location=mbr
 rootpw --lock
 
 # ---------------------------------------------------------------------------
-# Provision the user `dccntg` with default password
+# Provision the first user
 # ---------------------------------------------------------------------------
-user --name=dccntg --gecos="Administrator" --groups=wheel --password='@PASSWORD@' --iscrypted
+%include /tmp/user.ks
 
 %post
 # Configure the installed system here
