@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+mkdir -p ${HOME}/.config/home-manager
+
 cat > ${HOME}/.config/home-manager/home.nix <<EOF
 { config, pkgs, ... }:
 
@@ -26,6 +28,10 @@ cat > ${HOME}/.config/home-manager/home.nix <<EOF
   home.stateVersion = "26.11";
 }
 EOF
+
+if ! command -v home-manager >/dev/null; then
+    nix profile install github:nix-community/home-manager
+fi
 
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
 nix-channel --update
