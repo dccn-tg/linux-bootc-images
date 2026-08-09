@@ -22,6 +22,7 @@ kargs:
   - enforcing=1
   - audit=1
   - audit_backlog_limit=8192
-
+  
   # --- hibernate resume (assuming the named partition "swap" under LVM "vg0" ---
-  - resume=/dev/vg0/swap
+  #- resume=/dev/vg0/swap
+  - lockdown=confidentiality

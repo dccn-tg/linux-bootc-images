@@ -27,6 +27,6 @@ modules:
   - from-file: common/laptop-kargs.yml
 
   # Rebuild the initramfs to include the new kernel and modules
-  - type: initramfs
+  #- type: initramfs
 
   - type: signing
