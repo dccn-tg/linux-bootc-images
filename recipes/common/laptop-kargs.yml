@@ -24,4 +24,4 @@ kargs:
   - audit_backlog_limit=8192
   
   # --- disable "kernel lockdown when secure boot is enabled (non-standard, distro-opinioned setting)" for hibernate/resume ---
-  - lockdown=none
+  - lockdown=
