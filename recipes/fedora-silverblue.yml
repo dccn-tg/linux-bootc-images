@@ -26,4 +26,7 @@ modules:
   # Extra customization for GNOME desktop
   - from-file: gnome/appstore-disable-dnf.yml
 
+  # Rebuild the initramfs to include the new kernel and modules
+  - type: initramfs
+
   - type: signing
