@@ -6,10 +6,11 @@ set -euo pipefail
 # 1. Drop any inbound traffice to the public zone
 # ---------------------------------------------------------------------------
 
-firewall-offline-cmd --set-default-zone=public
+if [[ "$(firewall-offline-cmd --get-default-zone)" != "public" ]]; then
+    firewall-offline-cmd --set-default-zone=public
+fi
+
 firewall-offline-cmd --zone=public --set-target=DROP
-firewall-offline-cmd --zone=public --remove-services
-firewall-offline-cmd --zone=public --remove-ports
 
 # ---------------------------------------------------------------------------
 # 2. Allow all traffic originating from localhost (loopback / 127.0.0.1 / ::1)
