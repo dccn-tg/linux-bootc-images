@@ -12,6 +12,7 @@ modules:
         - pciutils           # provides lspci
 
         # fuse2 library for legacy AppImage applications
+        - fuse
         - fuse-libs
 
         # passwordless authentication
