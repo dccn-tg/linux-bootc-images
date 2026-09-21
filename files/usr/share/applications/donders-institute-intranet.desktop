@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Donders Institute Intranet
+Comment=Donders Institute Intranet
+Exec=xdg-open https://intranet.donders.ru.nl
+Icon=text-html
+Terminal=false
+Type=Application
