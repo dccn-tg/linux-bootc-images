@@ -1,0 +1,15 @@
+[Unit]
+Description=Setup non-nixos-gpu
+
+Wants=network-online.target
+After=network-online.target
+After=systemd-tmpfiles-setup.service
+
+ConditionPathExists=!/run/opengl-driver
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/setup-non-nixos-gpu.sh
+
+[Install]
+WantedBy=multi-user.target

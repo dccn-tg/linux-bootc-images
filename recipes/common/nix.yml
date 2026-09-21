@@ -15,6 +15,10 @@ modules:
     files:
       - source: usr/lib/systemd/system/nix.mount
         destination: /usr/lib/systemd/system/nix.mount
+      - source: usr/lib/systemd/system/setup-non-nixos-gpu.service
+        destination: /usr/lib/systemd/system/setup-non-nixos-gpu.service
+      - source: usr/libexec/setup-non-nixos-gpu.sh
+        destination: /usr/libexec/setup-non-nixos-gpu.sh
       - source: usr/bin/bootstrap-home-manager.sh
         destination: /usr/bin/bootstrap-home-manager.sh
 
@@ -23,9 +27,11 @@ modules:
       - "rm -f /nix"
       - "mkdir -p /nix"
       - "chmod +x /usr/bin/bootstrap-home-manager.sh"
+      - "chmod +x /usr/libexec/setup-non-nixos-gpu.sh"
 
   - type: systemd
     system:
       enabled:
         - nix.mount
         - nix-daemon.service
+        - setup-non-nixos-gpu.service
